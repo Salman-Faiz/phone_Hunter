@@ -9,12 +9,17 @@
 </head>
 
 <body>
-    <header>
+    <header class="m-10">
         <h2 class="text-5xl font-semibold">Hunting phone</h2>
     </header>
-    <main>
+    <main class="container mx-auto">
         <section>
-            <div id="phone-container">
+            <div>
+                <input id="Search_field" type="text" placeholder="Search phone..." class="input input-bordered w-full max-w-xs" /> <button onclick="searchPhones()" class="btn btn-accent">Search</button>
+            </div>
+        </section>
+        <section>
+            <div id="phone-container" class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
 
                 <!-- demo content -->
                 <!-- <div class="card w-96 bg-base-100 shadow-xl">

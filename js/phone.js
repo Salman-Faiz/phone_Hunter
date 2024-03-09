@@ -6,26 +6,30 @@
 
 // async ,await function to load data
 
-const loadPhone = async () => {
-    const response = await fetch('https://openapi.programming-hero.com/api/phones?search=iphone');
+const loadPhone = async (searchText) => {
+    // hard coded api url
+    // const response = await fetch('https://openapi.programming-hero.com/api/phones?search=iphone');
+    const response = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await response.json();
     // console.log(data.data);
     const phones = data.data;
     // console.log(phone);
     displayPhone(phones);
 }
-loadPhone();
+// loadPhone();
 
-const displayPhone =phones =>{
+const displayPhone = phones => {
 
     // console.log(phones);
     // get the container
     const phoneDiv = document.getElementById('phone-container');
+    // clear phone container cards before adding new cards
+    phoneDiv.textContent="";
     phones.forEach(phone => {
         // console.log(phone);
         // create the child element
-        const phoneDetails =document.createElement('div');
-        phoneDetails.classList =`card w-96 bg-base-100 shadow-xl`
+        const phoneDetails = document.createElement('div');
+        phoneDetails.classList = `card bg-base-100 shadow-xl`
         // set innerHtml
         phoneDetails.innerHTML = `<figure class="px-10 pt-10">
         <img src="${phone.image}" alt="" class="rounded-xl" />
@@ -42,5 +46,12 @@ const displayPhone =phones =>{
         phoneDiv.appendChild(phoneDetails);
 
     });
-   
+
+}
+// on click event handler.. 
+const searchPhones = () => {
+    const searchData = document.getElementById('Search_field');
+    const searchValue = searchData.value;
+    // console.log(searchValue);
+    loadPhone(searchValue);
 }
