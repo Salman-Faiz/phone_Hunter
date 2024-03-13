@@ -16,6 +16,8 @@ const loadPhone = async (searchText) => {
     const phones = data.data;
     // console.log(phone);
     displayPhone(phones);
+   
+    
 }
 // loadPhone();
 
@@ -62,15 +64,40 @@ const displayPhone = phones => {
         // appendChild
         phoneDiv.appendChild(phoneDetails);
 
+ 
     });
+// to remove the loading spinner..putting it after getting all data
+    loadingSpinner(false);
 
 }
 // on click event handler.. @@@@@@@@
 
 const searchPhones = () => {
+  loadingSpinner(true);
     const searchData = document.getElementById('Search_field');
     const searchValue = searchData.value;
     // console.log(searchValue);
     loadPhone(searchValue);
     searchData.value = '';
 }
+// loading-spinner added
+const loadingSpinner = (isLoading) =>{
+  const loading = document.getElementById('loading-spinner');
+
+  if(isLoading === true){
+     loading.classList.remove('hidden');
+  }
+  else{
+    loading.classList.add('hidden');
+  }
+ 
+}
+
+
+
+
+
+
+
+
+
