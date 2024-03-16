@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hunting Phone</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hunting Phone</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-    <header class="m-10">
-        <h2 class="text-5xl font-semibold">Hunting phone</h2>
-    </header>
-    <main class="container mx-auto">
-        <section>
-            <!-- search phone btn -->
-            <div>
-                <input id="Search_field" type="text" placeholder="Search phone..." class="input input-bordered w-full max-w-xs" /> <button onclick="searchPhones()" class="btn btn-accent">Search</button>
+  <header class="m-10">
+    <h2 class="text-5xl font-semibold">Hunting phone</h2>
+  </header>
+  <main class="container mx-auto">
+    <section>
+      <!-- search phone btn -->
+      <div>
+        <input id="Search_field" type="text" placeholder="Search phone..."
+          class="input input-bordered w-full max-w-xs" /> <button onclick="searchPhones()"
+          class="btn btn-accent">Search</button>
 
-                
-            </div>
-        </section>
-        <section>
-          <!-- loading spinner -->
-          <div class="text-center my-40 hidden" id="loading-spinner">
-            <span class="loading loading-spinner loading-lg"></span>
-          </div>
-            <div id="phone-container" class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
 
-                <!-- &&&&&&&&& demo content &&&&&&&&-->
+      </div>
+    </section>
+    <section>
+      <!-- loading spinner -->
+      <div class="text-center my-40 hidden" id="loading-spinner">
+        <span class="loading loading-spinner loading-lg"></span>
+      </div>
+      <div id="phone-container" class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
 
-                <!-- <div class="card w-96 bg-base-100 shadow-xl">
+        <!-- &&&&&&&&& demo content &&&&&&&&-->
+
+        <!-- <div class="card w-96 bg-base-100 shadow-xl">
                     <figure class="px-10 pt-10">
                       <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
                     </figure>
@@ -42,20 +45,56 @@
                       </div>
                     </div>
                   </div> -->
-                  
-            </div>
-            <!-- show all btn -->
-            <div  id="showAll" onclick="showAllElements()" class="hidden text-center">
-              
-                <button  id="btn-showAll" class="btn btn-success my-8 ">Show All</button>
-              </div>
-        </section>
-    </main>
-    <footer>
 
-    </footer>
-    <script src="js/phone.js"></script>
-   
+      </div>
+      <!-- show all btn -->
+      <div id="showAll" onclick="showAllElements()" class="hidden text-center">
+
+        <button id="btn-showAll" class="btn btn-success my-8 ">Show All</button>
+      </div>
+    </section>
+    <!-- show details Modal -->
+
+
+    <div id="showDetailsContainer">
+      <!-- Open the modal using ID.showModal() method -->
+
+      <dialog id="showDetailsModal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+          <div class="  bg-base-100 shadow-xl rounded-lg">
+            <figure class="px-10 pt-10" id="phoneImage">
+              
+            </figure>
+            <div class="card-body items-left text-left">
+              <h2 id="phoneName" class="card-title"></h2>
+              <div id="showModalContainer">
+              
+              </div>
+
+
+            </div>
+          </div>
+          <form method="dialog">
+            <div class="text-right my-4">
+                   <!-- if there is a button in form, it will close the modal -->
+            <button class="btn btn-secondary ">Close</button>
+            </div>
+       
+          </form>
+        </div>
+    </div>
+    </dialog>
+    </div>
+
+    <!-- demo modal card -->
+
+
+  </main>
+  <footer>
+
+  </footer>
+  <script src="js/phone.js"></script>
+
 </body>
 
 </html>

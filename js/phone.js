@@ -6,7 +6,7 @@
 
 // async ,await function to load data
 
-const loadPhone = async (searchText, isShowAll) => {
+const loadPhone = async (searchText='13', isShowAll) => {
   // hard coded api url
   // const response = await fetch('https://openapi.programming-hero.com/api/phones?search=iphone');
 
@@ -19,7 +19,7 @@ const loadPhone = async (searchText, isShowAll) => {
 
 
 }
-// loadPhone();
+loadPhone();
 
 const displayPhone = (phones, isShowAll) => {
 
@@ -60,7 +60,7 @@ const displayPhone = (phones, isShowAll) => {
         <h2 class="card-title">${phone.phone_name}</h2>
         <p>${phone.slug}</p>
         <div class="card-actions">
-          <button class="btn btn-primary">Buy Now</button>
+          <button onclick="showDetails('${phone.slug}')" class="btn btn-primary">Show details</button>
         </div>
       </div>
         `
@@ -101,6 +101,41 @@ const showAllElements = () => {
   // console.log('clickedd')
   searchPhones(true);
 
+
+}
+
+// show details modal
+
+showDetails = async (id) => {
+  console.log('details clicked', id)
+  const response = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+  const data = await response.json();
+  const phone = data.data;
+  console.log(phone);
+  showDetailsEachPhone(phone);
+}
+
+const showDetailsEachPhone = (phone) => {
+
+  showDetailsModal.showModal();
+  const phoneImage = document.getElementById('phoneImage');
+  phoneImage.innerHTML = `
+  <img src=${phone.image} class="rounded-xl mx-auto" />
+  `
+  const phoneName = document.getElementById('phoneName');
+  phoneName.innerHTML = `<span class="font-bold">${phone.name}</span>`
+  const showModalContainer = document.getElementById('showModalContainer');
+              showModalContainer.innerHTML = `
+            <p><span class="font-semibold">Today or any day that phone may ring and bring good news. </span> </p>
+            <h3 ><span class="font-bold">Storage:</span> ${phone.mainFeatures.storage}</h3>
+            <h3 ><span class="font-bold">display size:</span> ${phone.mainFeatures.displaySize}</h3>
+            <h3 ><span class="font-bold">chipSet:</span> ${phone.mainFeatures.chipSet}</h3>
+            <h3 ><span class="font-bold">Memory:</span> ${phone.mainFeatures.memory}</h3>
+            <h3 ><span class="font-bold">Slug:</span> ${phone.slug}</h3>
+            <h3 ><span class="font-bold">Release Date:</span> ${phone.releaseDate}</h3>
+            <h3 ><span class="font-bold">Brand:</span> ${phone.brand}</h3>
+            <h3 ><span class="font-bold">GPS:</span> ${phone.others.GPS}</h3>
+            `
 
 }
 
