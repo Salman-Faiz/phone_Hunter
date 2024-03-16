@@ -132,10 +132,12 @@ const showDetailsEachPhone = (phone) => {
             <h3 ><span class="font-bold">chipSet:</span> ${phone.mainFeatures.chipSet}</h3>
             <h3 ><span class="font-bold">Memory:</span> ${phone.mainFeatures.memory}</h3>
             <h3 ><span class="font-bold">Slug:</span> ${phone.slug}</h3>
-            <h3 ><span class="font-bold">Release Date:</span> ${phone.releaseDate}</h3>
+            <h3 ><span class="font-bold">Release Date:</span> ${phone?.releaseDate}</h3>
             <h3 ><span class="font-bold">Brand:</span> ${phone.brand}</h3>
-            <h3 ><span class="font-bold">GPS:</span> ${phone.others.GPS}</h3>
+            
+            <h3 ><span class="font-bold">GPS:</span> ${phone?.others?.GPS || 'gps not available'}</h3>
             `
+            // if data is undefined optional chaining + or use should use.
 
 }
 
